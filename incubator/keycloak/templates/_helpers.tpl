@@ -72,7 +72,7 @@ Create environment variables for database configuration.
   value: {{ .Values.keycloak.persistence.dbPort | quote }}
 - name: DB_USER
   value: {{ .Values.keycloak.persistence.dbUser | quote }}
-- name: DB_PARAMS
+- name: JDBC_PARAMS
   value: {{ .Values.keycloak.persistence.jdbcParams | quote }}
 - name: POSTGRES_PASSWORD
   valueFrom:
