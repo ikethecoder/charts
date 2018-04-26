@@ -70,7 +70,7 @@ Create environment variables for database configuration.
   value: {{ .Values.keycloak.persistence.dbHost | quote }}
 - name: POSTGRES_PORT_5432_TCP_PORT
   value: {{ .Values.keycloak.persistence.dbPort | quote }}
-- name: DB_USER
+- name: POSTGRES_USER
   value: {{ .Values.keycloak.persistence.dbUser | quote }}
 - name: JDBC_PARAMS
   value: {{ .Values.keycloak.persistence.jdbcParams | quote }}
