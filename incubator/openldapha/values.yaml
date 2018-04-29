@@ -1,0 +1,29 @@
+## openldap image version
+##
+openldapImage: osixia/openldap
+
+openldapha:
+  replicaCount: 2
+  tls: false
+  organization: IDO GOV
+  domain: idoaccess.gov
+  baseDN: dc=idoaccess,dc=gov
+  adminDN: cn=admin,dc=idoaccess,dc=gov
+  replicationUser: uid=manager,dc=idoaccess,dc=gov
+#  adminPassword: admin
+
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  enabled: true
+  ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
+  ##
+  accessMode: ReadWriteOnce
+  size: 10Gi
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+

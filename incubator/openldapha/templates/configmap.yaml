@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+data:
+  master.cnf: |
+    # Apply this config only on the master.
+    [mysqld]
+    log-bin
+    skip_name_resolve
+  slave.cnf: |
+    # Apply this config only on slaves.
+    [mysqld]
+    super-read-only
+    skip_name_resolve
+  server-id.cnf: |
+    [mysqld]
+    server-id=@@SERVER_ID@@
+  create-replication-user.sql: |
+    CREATE USER IF NOT EXISTS '@@REPLICATION_USER@@' IDENTIFIED BY '@@REPLICATION_PASSWORD@@';
+    GRANT PROCESS, RELOAD, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO '@@REPLICATION_USER@@';
+    FLUSH PRIVILEGES;
+  default.startup.yaml: |
+    LDAP_ORGANISATION: {{ .Values.openldapha.organization }}
+    LDAP_DOMAIN: {{ .Values.openldapha.domain }}
+    LDAP_ADMIN_PASSWORD: @@ADMIN_PASSWORD@@
+    LDAP_CONFIG_PASSWORD: @@CONFIG_PASSWORD@@
+    LDAP_BACKEND: mdb
+    LDAP_TLS: false
+    LDAP_REPLICATION: true
+    LDAP_REPLICATION_CONFIG_SYNCPROV: binddn="cn=admin,cn=config" bindmethod=simple credentials="$LDAP_CONFIG_PASSWORD" searchbase="cn=config" type=refreshAndPersist retry="60 +" timeout=1
+    LDAP_REPLICATION_DB_SYNCPROV: binddn="cn=admin,$LDAP_BASE_DN" bindmethod=simple credentials="$LDAP_ADMIN_PASSWORD" searchbase="$LDAP_BASE_DN" type=refreshAndPersist interval=00:00:00:10 retry="60 +" timeout=1
+
+    LDAP_REPLICATION_HOSTS: "#PYTHON2BASH:['ldap://openldapha-openldapha-0','ldap://openldapha-openldapha-1']"
+    LDAP_REMOVE_CONFIG_AFTER_SETUP: true
+
+  default.yaml: |
+    LDAP_LOG_LEVEL: 16640
+
+
+

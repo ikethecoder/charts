@@ -1,0 +1,13 @@
+name: openldapha
+version: 0.1.0
+appVersion: 2.4.16 
+description: OpenLDAP cluster with a single master and zero or more slave replicas
+keywords:
+  - openldap
+  - ldap
+  - directory service
+home: https://www.openldap.org 
+icon: https://www.openldap.org/images/headers/LDAPlogo.gif
+maintainers:
+  - name: Ikethecoder
+    email: ikethecoder@canzea.com 

@@ -1,0 +1,13 @@
+dn: dc=idp-dev,dc=idoaccess,dc=gov
+o: IDP-DEV 
+objectclass: organization
+objectclass: dcObject
+
+dn: ou=people,dc=idp-dev,dc=idoaccess,dc=gov
+objectClass: organizationalUnit
+ou: people 
+
+dn: ou=groups,dc=idp-dev,dc=idoaccess,dc=gov
+objectClass: organizationalUnit
+ou: groups
+
