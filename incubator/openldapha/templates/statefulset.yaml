@@ -114,14 +114,16 @@ spec:
         - name: openldap
           containerPort: 389
         volumeMounts:
-        - name: state
+        - name: conf 
           mountPath: /container/run/state
+          subPath: state
         - name: environment
           mountPath: /container/environment/99-default
         - name: data
           mountPath: /var/lib/ldap
         - name: conf
           mountPath: /etc/ldap/slapd.d
+          subPath: ldap
         resources:
           requests:
             cpu: {{ .Values.resources.requests.cpu }}
@@ -145,8 +147,6 @@ spec:
           timeoutSeconds: 1
 
       volumes:
-      - name: state
-        emptyDir: {}
       - name: environment
         emptyDir: {}
       - name: conf
@@ -186,6 +186,5 @@ spec:
       - {{ .Values.persistence.accessMode | quote }}
       resources:
         requests:
-          storage: {{ .Values.persistence.size | quote }}
-
+          storage: 1Gi
   {{- end }}

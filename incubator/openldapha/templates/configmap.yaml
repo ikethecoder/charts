@@ -36,7 +36,7 @@ data:
     LDAP_REPLICATION_CONFIG_SYNCPROV: binddn="cn=admin,cn=config" bindmethod=simple credentials="$LDAP_CONFIG_PASSWORD" searchbase="cn=config" type=refreshAndPersist retry="60 +" timeout=1
     LDAP_REPLICATION_DB_SYNCPROV: binddn="cn=admin,$LDAP_BASE_DN" bindmethod=simple credentials="$LDAP_ADMIN_PASSWORD" searchbase="$LDAP_BASE_DN" type=refreshAndPersist interval=00:00:00:10 retry="60 +" timeout=1
 
-    LDAP_REPLICATION_HOSTS: "#PYTHON2BASH:['ldap://openldapha-openldapha-0','ldap://openldapha-openldapha-1']"
+    LDAP_REPLICATION_HOSTS: '#PYTHON2BASH:["ldap://openldapha-openldapha-0","ldap://openldapha-openldapha-1","ldap://openldapha-openldapha-0.openldapha-openldapha","ldap://openldapha-openldapha-1.openldapha-openldapha"]'
     LDAP_REMOVE_CONFIG_AFTER_SETUP: true
 
   default.yaml: |

@@ -33,3 +33,23 @@ spec:
     port: 389
   selector:
     app: {{ template "fullname" . }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "fullname" . }}-lb
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  type: LoadBalancer
+  ports:
+  - name: {{ template "fullname" . }}
+    port: 389
+    targetPort: 389
+    protocol: TCP
+  selector:
+    app: {{ template "fullname" . }}
+

@@ -7,8 +7,8 @@ delete: olcSyncrepl
 olcSyncrepl: {0}
 -
 add: olcSyncrepl
-olcSyncrepl: rid=101 provider=ldap://openldapha-openldapha-0.openldapha-openldapha binddn="cn=admin,dc=idoaccess,dc=gov" bindmethod=simple credentials="rYLZOe0rTkR4" searchbase="dc=idoaccess,dc=gov" type=refreshAndPersist interval=00:00:00:10 retry="60 +" timeout=1
+olcSyncrepl: rid=101 provider=ldap://openldapha-openldapha-0.openldapha-openldapha binddn="cn=admin,dc=idoaccess,dc=gov" bindmethod=simple credentials="SpnfgUI8LHSQ" searchbase="dc=idoaccess,dc=gov" type=refreshAndPersist interval=00:00:00:10 retry="60 +" timeout=1
 -
 add: olcSyncrepl
-olcSyncrepl: rid=102 provider=ldap://openldapha-openldapha-1.openldapha-openldapha binddn="cn=admin,dc=idoaccess,dc=gov" bindmethod=simple credentials="rYLZOe0rTkR4" searchbase="dc=idoaccess,dc=gov" type=refreshAndPersist interval=00:00:00:10 retry="60 +" timeout=1
+olcSyncrepl: rid=102 provider=ldap://openldapha-openldapha-1.openldapha-openldapha binddn="cn=admin,dc=idoaccess,dc=gov" bindmethod=simple credentials="SpnfgUI8LHSQ" searchbase="dc=idoaccess,dc=gov" type=refreshAndPersist interval=00:00:00:10 retry="60 +" timeout=1
 
